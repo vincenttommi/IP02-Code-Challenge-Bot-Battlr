@@ -1,95 +1,46 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
+import '../App.css';
 
+const BotCollection = ({ onBotEnlisted, onBotRelease }) => {
+const [bots, setBots] = useState([]);
 
-const BotCollection = ({incoming}) => {
+useEffect(() => {
+fetch('http://localhost:3002/bots')
+.then(response => response.json())
+.then(data => setBots(data))
+.catch(error => console.error(error));
+}, []);
 
- const [bots,setBots] = useState([]);
- const [vinbot, setVinBot] =useState([]);
+useEffect(() => {
+setBots(bots => bots.filter(bot => !onBotRelease || !onBotRelease(bot.id)));
+}, [onBotRelease]);
 
-//  Fetch the list of bots from the backend API using fetch or a similar method.
-// Store the data in a state variable using React's useState hook.
+const handleEnlist = (bot) => {
+onBotEnlisted(bot);
+};
 
- useEffect(()=> {
-    fetch("http://localhost:8000/bots")
-     .then(response => response.json())
-     .then(data => setBots(data));
- }, []);
+return (
+<div >
+<h1>Bot Collection</h1>
+<div className="card-row">
+{bots.map(bot => (
+<div className="card" key={bot.id}>
+<img className="card-img-top" src={bot.avatar_url} alt={bot.name} />
+<div className="card-body">
+<h5 className="card-title">{bot.name}</h5>
+<p className="card-text">Health: {bot.health}</p>
+<p className="card-text">Damage: {bot.damage}</p>
+<p className="card-text">Armor: {bot.armor}</p>
+<p className="card-text">Class: {bot.bot_class}</p>
+<p className="card-text">Catchphrase: {bot.catchphrase}</p>
 
-
-function display(event){
-
-
-
-   let id = event.target.id
-    //given id recieved names 
-   let  myVinBotArray = [...vinbot,id]
-   //created array an array of id
-   let  myVinArray2 = [...new Set(myVinBotArray)]
-   //changing state of empty array
-   setVinBot(myVinArray2)
-   //passing bot array to parent
-   incoming(vinbot)
-}
-
-
-
-
-//  function dischargebots(){
-//     fetch("http://localhost:8000/bots/bots.id", {
-//         method="DELETE",
-//        .then(() => setBots(bots.filter))   
-
-//     })
-// }
-
-  return (
-    <div>
-        
-        <h2>BotCollection</h2>
-        {bots.map((bot)=>{
-          const{
-            id,
-            name,
-            health,
-            damage,
-            armor,
-            bot_class,
-            catchphrase,
-            avatar_url,
-            created_at,
-            updated_at,
-          } = bot
-
-          return (
-
-             <div className="card">
-                 <div class="card-name">
-                 <h3>{name}</h3> 
-                 </div>
-                 <div class="card-image">
-                 <img src={ avatar_url}/>
-                 </div>
-                 <div class="card-details">
-
-                    <p>{health}</p>
-                    <p>{damage}</p>
-                    <p>{armor}</p>
-                    <p>{armor}</p>
-                    <p>{bot_class}</p>
-                    <p> {catchphrase}</p>
-                    <p> {created_at}</p>
-                    <p> {updated_at}</p>
-
-                 </div>
-                </div>
-
-          )
-        })}
-
-        
-        
-        </div>
-  )
-}
+<button onClick={() => handleEnlist(bot)}>Enlist</button>
+</div>
+</div>
+))}
+</div>
+</div>
+);
+};
 
 export default BotCollection;

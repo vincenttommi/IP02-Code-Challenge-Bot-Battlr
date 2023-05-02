@@ -1,6 +1,6 @@
  # Bot Batt
  # For this project, am building out a React application that displays a
-
+    
  # Part of what this code challenge is testing is my  ability to follow given
 # instructions. While you will definitely have a significant amount of freedom in
 # how I implement the features, be sure to carefully read the directions for

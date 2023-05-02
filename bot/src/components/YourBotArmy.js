@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from 'react'
-// import BotCollection from './BotCollection';
+import React from "react";
 
-const YourBotArmy = (output_id) => {
-
-    const [bot_available,setBot_available] = useState([]);
-
-
-    useEffect(()=> {
-        fetch("http://localhost:8000/bots")
-         .then(response => response.json())
-         .then(data => setBot_available(data));
-     }, []);
-    
-    
+function YourBotArmy({ army, removeFromArmy, dischargeBot }) {
+  
+  
   return (
-
-   <div className='DisplayBots'>
-
-    <h2>vincettommi</h2>
-
-
-
-   </div>
-  )
+    <div className="your-bot-army">
+      {army.length > 0 ? (
+        army.map((bot) => (
+          <BotCard
+            // key={bot.id}
+            // bot={bot}
+            // removeFromArmy={removeFromArmy}
+            // deleteBot={dischargeBot}
+          />
+        ))
+      ) : (
+        <p> You haven't enlisted vincenttommi.</p>
+      )}
+    </div>
+  );
 }
 
-export default YourBotArmy
+export default YourBotArmy;
