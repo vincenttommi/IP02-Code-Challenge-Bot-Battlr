@@ -39,27 +39,57 @@
 
 
 
+
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 600px;
-  height: 600px;
-  float: right;
-  top: 20px;
-  color: greenyellow;
+  background-color:red;
+  margin: 20px;
+  width: 300px;
+  border: 1px solid #626060;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-/* Add some padding inside the card container */
-.container {
-  
-  width: 600px;
-  height: 600px;
-   margin:20px;
-  
+.card-body {
+  padding: 10px;
 }
+
+.card-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-text {
+  margin: 0;
+}
+
+
+
+
+
+.discharge-btn {
+  background-color: green;
+  color: white;
+}
+
+
+
+.your-bot-army {
+  background-color: rgb(200, 243, 7);
+}
+
+
