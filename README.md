@@ -1,6 +1,6 @@
  # Bot Batt
  # For this project, am building out a React application that displays a
-    
+
  # Part of what this code challenge is testing is my  ability to follow given
 # instructions. While you will definitely have a significant amount of freedom in
 # how I implement the features, be sure to carefully read the directions for
@@ -17,3 +17,4 @@
 #  Discharge a bot from their service forever, by clicking the red button marked
  #  "x", which would delete the bot both from the backend and from the
  #  `YourBotArmy` on the frontend.
+ # live https://ip-02-code-challenge-bot-battlr-ez3e-git-main-vincenttommi.vercel.app/
